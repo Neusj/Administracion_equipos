@@ -2,6 +2,8 @@ Para esta actividad se solicitó crear una aplicación, que pudiera administrar 
 pero que cumpliera con toda la funcionalidad de un CRUD básico, manejos de vistas y clases en el framework WPF y además,
 creando la interfaz gráfica mediante XAML. 
 
+Algunas imágenes de ejemplo a continuación.
+
 
 
 ![uno](https://github.com/Neusj/Administracion_equipos/assets/52982808/091809b5-f177-4b42-b4e4-f0d8fec517c4)
