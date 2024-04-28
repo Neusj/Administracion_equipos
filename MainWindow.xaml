@@ -7,19 +7,21 @@
         mc:Ignorable="d"
         Title="Administración de equipos" Height="450" Width="800">
     <Grid>
+
         <DockPanel LastChildFill="False">
             <Menu x:Name="mnPrincipal" DockPanel.Dock="Top" IsMainMenu="True" Height="20">
                 <MenuItem Header="Equipo">
                     <MenuItem Header="Agregar" x:Name="AgregarEquipo" Click="Agregar_Click" />
                     <MenuItem Header="Listar Todos" x:Name="listar" Click="Listar_Click" />
                 </MenuItem>
+                <MenuItem Header="Reportes">
+                    <MenuItem Header="Cantidad Masculinos" x:Name="cantidadMasculinos" Click="cantidad_Masculinos" />
+                    <MenuItem Header="Cantidad Femeninos" x:Name="cantidadFemeninos" Click="cantidad_Femeninos" />
+                </MenuItem>
                 <MenuItem Header="Información">
                     <MenuItem Header="Acerca de..." x:Name="AcercaDe" Click="AcercaDe_Click" />
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <DataGrid x:Name="dgAllEquipos" Margin="0,20,0,0" >
-            
-        </DataGrid>
     </Grid>
 </Window>

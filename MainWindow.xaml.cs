@@ -1,4 +1,5 @@
-﻿using Administracion_equipos.Vistas;
+﻿using Administracion_equipos.Clases;
+using Administracion_equipos.Vistas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,6 @@ namespace Administracion_equipos
         public MainWindow()
         {
             InitializeComponent();
-            dgAllEquipos.ItemsSource = Clases.EquipoCollection.equipos;
-            dgAllEquipos.CanUserAddRows = false;
-
         }
 
         private void Agregar_Click(object sender, RoutedEventArgs e)
@@ -41,9 +39,30 @@ namespace Administracion_equipos
             vistas.AcercaDe acercaDe = new vistas.AcercaDe();
             acercaDe.ShowDialog();
         }
-        private void Window_Activated(object sender, EventArgs e)
+
+        private void cantidad_Masculinos(object sender, RoutedEventArgs e)
         {
-            dgAllEquipos.Items.Refresh();
+            EquipoReportes equipoReportes = new EquipoReportes();
+            int cantidadMasculinos = equipoReportes.getCantidadMasculinos();
+
+            MessageBox.Show(
+                $"La cantidad de equipos masculinos es: {cantidadMasculinos}",
+                "Cantidad de Equipos Masculinos",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
+        }
+        private void cantidad_Femeninos(object sender, RoutedEventArgs e)
+        {
+            EquipoReportes equipoReportes = new EquipoReportes();
+            int cantidadFemeninos = equipoReportes.getCantidadFemeninos();
+
+            MessageBox.Show(
+                $"La cantidad de equipos femeninos es: {cantidadFemeninos}",
+                "Cantidad de Equipos Femeninos",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
     }
 }

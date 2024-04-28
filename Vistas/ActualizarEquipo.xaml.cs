@@ -43,6 +43,7 @@ namespace Administracion_equipos.Vistas
         {
             Clases.Equipo equipo_temp = new Clases.Equipo();
 
+            equipo_temp.EquipoId = this._Equipo.EquipoId;
             equipo_temp.NombreEquipo = txtNombreEquipo.Text;
             equipo_temp.NombreDT = txtNombreDT.Text;
             equipo_temp.TipoEquipo = txtTipoEquipo.Text;
@@ -50,9 +51,18 @@ namespace Administracion_equipos.Vistas
             equipo_temp.CantidadJugadores = Convert.ToInt32(txtCantidadJugadores.Text);
             equipo_temp.TieneSub21 = chTieneSub21.IsChecked.Value ? true : false;
 
-            int index = Clases.EquipoCollection.equipos.IndexOf(this._Equipo);
-            Clases.EquipoCollection.equipos.RemoveAt(index);
-            Clases.EquipoCollection.equipos.Insert(index, equipo_temp);
+
+            bool updateResult = equipo_temp.Update();
+          
+            if (updateResult)
+            {
+                MessageBox.Show("El equipo se actualizó correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+            else
+            {
+                MessageBox.Show("Error al actualizar el equipo.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             this.Close();
         }

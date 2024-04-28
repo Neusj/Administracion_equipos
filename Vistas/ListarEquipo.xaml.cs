@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Administracion_equipos.Clases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,12 @@ namespace Administracion_equipos.Vistas
     /// </summary>
     public partial class ListarEquipo : Window
     {
+        EquipoCollection equipoCollection = new EquipoCollection();
+
         public ListarEquipo()
         {
             InitializeComponent();
-            dgAllEquipos.ItemsSource = Clases.EquipoCollection.equipos;
+            dgAllEquipos.ItemsSource = equipoCollection.ReadAll();
             dgAllEquipos.CanUserAddRows = false;
         }
 
@@ -35,14 +38,28 @@ namespace Administracion_equipos.Vistas
         }
         private void btnEliminaEquipoClick(object sender, RoutedEventArgs e)
         {
-            int indexEquipo = dgAllEquipos.SelectedIndex;
-            Clases.EquipoCollection.equipos.RemoveAt(indexEquipo);
-            dgAllEquipos.Items.Refresh();
+            MessageBoxResult messageResult = MessageBox.Show(
+                "¿Está seguro de que desea eliminar este equipo?",
+                "Confirmación",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+            );
+            if ( messageResult == MessageBoxResult.Yes)
+            {
+                Equipo equipo = (Equipo)dgAllEquipos.SelectedItem;
+                bool deleteResult = equipo.Delete(equipo.EquipoId);
+                if (deleteResult)
+                {
+                    dgAllEquipos.ItemsSource = equipoCollection.ReadAll();
+                    MessageBox.Show("El equipo se eliminó correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el equipo.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
+            }
         }
 
-        private void Window_Activated(object sender, EventArgs e)
-        {
-            dgAllEquipos.Items.Refresh();
-        }
     }
 }

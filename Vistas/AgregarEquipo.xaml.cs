@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Administracion_equipos.Clases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,9 +36,35 @@ namespace Administracion_equipos.Vistas
             bool TieneSub21 = chTieneSub21.IsChecked.Value ? true : false;
 
             Clases.Equipo equipo = new Clases.Equipo(NombreEquipo, NombreDT, TipoEquipo, CapitanEquipo,CantidadJugadores, TieneSub21);
-            Clases.EquipoCollection.equipos.Add(equipo);
-            this.Close();
-        
+            bool createResult = equipo.Create();
+            MessageBoxResult newEquipoResult = new MessageBoxResult();
+
+            if (createResult)
+            {
+                 newEquipoResult = MessageBox.Show("¿Desea crear otro equipo?", "Crear otro equipo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            }
+            else
+            {
+                MessageBox.Show("Error al crear el equipo.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Close();
+
+            }
+
+            if (newEquipoResult == MessageBoxResult.Yes)
+            {
+                txtNombreEquipo.Text = "";
+                txtNombreDT.Text = "";
+                txtTipoEquipo.Text = "";
+                txtNombreCapitan.Text = "";
+                txtCantidadJugadores.Text = "";
+                chTieneSub21.IsChecked = false;
+            }
+            else
+            {
+                MessageBox.Show("El equipo se creó correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+
         }
 
         private static Regex _regex = new Regex("[^0-9]+");
