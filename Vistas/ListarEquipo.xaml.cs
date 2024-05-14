@@ -38,7 +38,7 @@ namespace Administracion_equipos.Vistas
         }
         private void btnEliminaEquipoClick(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult messageResult = MessageBox.Show(
+            MessageBoxResult messageResult = MessageBox.Show( 
                 "¿Está seguro de que desea eliminar este equipo?",
                 "Confirmación",
                 MessageBoxButton.YesNo,

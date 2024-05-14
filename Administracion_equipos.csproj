@@ -91,6 +91,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Security\AES_helper.cs" />
+    <Compile Include="Validations\EquipoCustomRules.cs" />
+    <Compile Include="Validations\NoNullorEmtyRule.cs" />
     <Compile Include="Vistas\AcercaDe.xaml.cs">
       <DependentUpon>AcercaDe.xaml</DependentUpon>
     </Compile>
@@ -184,5 +187,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
