@@ -2,6 +2,8 @@ Para esta actividad se solicitó crear una aplicación, que pudiera administrar 
 pero que cumpliera con toda la funcionalidad de un CRUD básico, manejos de vistas y clases en el framework WPF y además,
 creando la interfaz gráfica mediante XAML. 
 
+Ya cuenta con persistencia de datos, con EntityFramework y con SQL server como motor de BBDD.
+
 Algunas imágenes de ejemplo a continuación.
 
 
